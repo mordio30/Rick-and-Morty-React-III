@@ -11,18 +11,35 @@ import NavBar from './components/NavBar'
 
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [favorites, setFavorites] = useState([])
+
+  const isFavorite = (character) => {
+    return favorites.includes(character)
+  }
+
+  const addFavorite = (character) => {
+    if (favorites.length > 3){
+      alert("You can only have 4 favorites")
+    }
+    else{
+    setFavorites([...favorites, character])
+    }
+  }
+
+  const rmFavorite = (character) => {
+    setFavorites(favorites.filter((char) => char.id !== character.id))
+  }
 
   useEffect(()=>{
-    console.log(user)
-  }, [user])
+    console.log(favorites)
+  }, [favorites])
 
   return (
     <>
       <NavBar />
       <h1>Rick and Morty</h1>
      
-      <Outlet />
+      <Outlet context={{favorites,isFavorite,addFavorite,rmFavorite}}/>
     </>
   )
 }

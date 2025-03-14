@@ -6,6 +6,8 @@ import { createBrowserRouter } from "react-router-dom";
 import NotFoundPage from '../pages/NotFoundPage';
 import ErrorPage from '../pages/ErrorPage';
 import CharactersPage from '../pages/CharactersPage';
+import ACharacterPage from '../pages/ACharacterPage';
+import FavoriteCharacters from '../pages/FavoriteCharacters';
 
 const router = createBrowserRouter([
     {
@@ -25,8 +27,16 @@ const router = createBrowserRouter([
           element:<ContactPage />
         },
         {
-            path:"/characters/",
-            element:<CharactersPage />
+          path:"/characters/",
+          element:<CharactersPage />
+        },
+        {
+          path:"/character/:id/",
+          element:<ACharacterPage />
+        },
+        {
+          path:"/favorites/",
+          element:<FavoriteCharacters />
         },
         {
           path:"*",
